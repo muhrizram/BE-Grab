@@ -22,11 +22,13 @@ public class OlapTransaction {
     @Column(name = "id")
     private String id;
 
-    @Column(name = "user_id")
-    private String userId;
+    @ManyToOne
+    @JoinColumn(name = "pax_id", referencedColumnName = "id")
+    private Pax pax;
 
-    @Column(name = "product_id")
-    private String productId;
+    @ManyToOne
+    @JoinColumn(name = "menu_id", referencedColumnName = "id")
+    private Menu menu;
 
     @Column(name = "status")
     private String status;

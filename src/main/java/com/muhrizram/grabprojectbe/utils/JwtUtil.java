@@ -15,7 +15,7 @@ import java.util.Map;
 public class JwtUtil {
 
     private final Key SECRET_KEY = Keys.hmacShaKeyFor("kode-rahasia-kode-rahasia-kode-rahasia-kode".getBytes());
-    private final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 jam
+    private final long EXPIRATION_TIME = 8000 * 60 * 60;
 
     public String generateToken(String username) {
         Map<String, Object> claims = new HashMap<>();

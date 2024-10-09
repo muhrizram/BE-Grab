@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.muhrizram.grabprojectbe.DTOs.requests.TransactionRequest;
+import com.muhrizram.grabprojectbe.DTOs.requests.oltp.OltpTransactionRequest;
 import com.muhrizram.grabprojectbe.DTOs.responses.BodyResponse;
 import com.muhrizram.grabprojectbe.services.TransactionService;
 
@@ -25,7 +26,7 @@ public class TransactionController {
     TransactionService transactionService;
 
     @PostMapping("/create")
-    public ResponseEntity<BodyResponse> createTransaction(@Valid @RequestBody TransactionRequest request) {
+    public ResponseEntity<BodyResponse> createTransaction(@Valid @RequestBody OltpTransactionRequest request) {
         try {
             return transactionService.createTransaction(request);
         } catch (Exception e) {

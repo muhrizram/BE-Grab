@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -19,8 +20,8 @@ import java.time.LocalDateTime;
 public class Pax {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false)
-    private Integer id;
+    @Column(nullable = false, unique = true)
+    private UUID id;
 
     @Column(nullable = false)
     private String fullName;
