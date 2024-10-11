@@ -33,17 +33,14 @@ public class StatisticServiceImpl implements StatisticService {
             String status = (String) result[2];
             Long count = ((Number) result[3]).longValue();
 
-            // Dapatkan atau inisialisasi daftar bulanan untuk tahun tertentu
             counts.putIfAbsent(year, new ArrayList<>());
             List<Map<String, Object>> yearData = counts.get(year);
 
-            // Cari data bulan jika sudah ada dalam daftar untuk tahun ini
             Map<String, Object> monthData = yearData.stream()
                     .filter(data -> data.get("month").equals(month))
                     .findFirst()
                     .orElse(null);
 
-            // Jika bulan belum ada, buat data baru untuk bulan ini
             if (monthData == null) {
                 monthData = new HashMap<>();
                 monthData.put("month", month);
@@ -52,7 +49,6 @@ public class StatisticServiceImpl implements StatisticService {
                 yearData.add(monthData);
             }
 
-            // Update jumlah berdasarkan status
             if (status.equals("completed")) {
                 monthData.put("completed", count);
             } else if (status.equals("canceled")) {

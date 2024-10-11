@@ -14,6 +14,9 @@ public interface OltpTransactionRepository extends MongoRepository<OltpTransacti
 
     Page<OltpTransaction> findByPaxId(String paxId, Pageable pageable);
 
-    @Query("{ 'paxId': ?0, '$or': [ { 'createdAt': { $regex: ?1, $options: 'i' } }, { 'productId': { $regex: ?1, $options: 'i' } } ] }")
+    @Query("{ 'pax.id': ?0, '$or': [ " +
+            "{ 'menu.name': { $regex: ?1, $options: 'i' } }, " +
+            "] }")
     Page<OltpTransaction> findByPaxIdAndMultiFieldSearch(String paxId, String search, Pageable pageable);
+
 }
